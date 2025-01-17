@@ -3,6 +3,7 @@ import CreateStudent from "../pages/admin/CreateStudent";
 import CreateAdmin from "../pages/admin/createAdmin";
 import CreateFaculty from "../pages/admin/CreateFaculty";
 import AcademicSemester from "../pages/admin/academicManagement/academicSemester";
+import CreateAcademicSemester from "../pages/admin/academicManagement/createAcademicSemester";
 
 // type TRoute ={
 //     path: string,
@@ -20,10 +21,15 @@ export const adminPaths =[
         name: "Academic Management",
         children:[
             {
+                name:"Create Academic Semester",
+                path:'create-academic-semesters',
+                element:<CreateAcademicSemester/>
+            },
+            {
                 name:"Academic Semester",
                 path:'academic-semesters',
                 element:<AcademicSemester/>
-            }
+            },
         ]
 
     },

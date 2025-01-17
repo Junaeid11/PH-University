@@ -1,12 +1,21 @@
-import { Input } from "antd"
+import { Form, Input } from "antd"
 import { Controller,  } from "react-hook-form"
 
-const PHInput = ({ type, name, label }) => {
+
+type TInput ={
+    type: string,
+    name: string,
+    label: string
+}
+
+const PHInput = ({ type, name, label }: TInput) => {
     return (
         <>
-        {label  ? label: null}
         <Controller
-         name={name} render={({field}) =><Input {...field} type={type} id={name} />}/>
+         name={name} render={({field}) =>
+         <Form.Item label={label}>
+            <Input {...field} type={type} />
+         </Form.Item> }/>
     
         </>
     )

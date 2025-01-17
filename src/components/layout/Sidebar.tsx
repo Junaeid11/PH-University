@@ -38,7 +38,7 @@ const userRole ={
     <Sider
       breakpoint="lg"
       collapsedWidth="0"
-    
+    style={{height: '100vh', position:"sticky", left:"0", top:"0"} }
     >
       <div className="demo-logo-vertical" />
      <div style={{color: 'white', textAlign: 'center', padding: '10px 0'}}>

@@ -12,13 +12,6 @@ import { useAppDispatch } from '../redux/features/hooks';
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  // const { register, handleSubmit } = useForm({
-  //   defaultValues: {
-  //     userId: 'A-0002',
-  //     password: 'admin123',
-  //   },
-  // });
-
   const defaultValues = {
     userId: 'A-0001',
     password: 'admin123',
@@ -48,7 +41,7 @@ const Login = () => {
   return (
     <Row justify="center" align="middle" style={{ height: '100vh' }}>
       <PHform onSubmit={onSubmit} defaultValues={defaultValues}>
-        <PHInput type="text" name="userId" label="ID:" />
+        <PHInput type="text" name="userId" label="ID " />
         <PHInput type="text" name="password" label="Password" />
         <Button htmlType="submit">Login</Button>
       </PHform>

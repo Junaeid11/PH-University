@@ -17,7 +17,7 @@ export default function MainLayout() {
 
 
     
-<Layout style={{height: '100vh'}}>
+<Layout style={{}}>
   <Sidebar/>
       <Header >
         <Button onClick={handleLogout}>LogOut</Button>

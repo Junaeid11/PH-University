@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Form } from "antd";
 import { ReactNode } from "react";
 import { FieldValues, FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
 type TFormConfig = {
   defaultValues?: Record<string, any>;
+  resolver?: any;
 };
 
 type TFormProps = {
@@ -11,19 +13,23 @@ type TFormProps = {
   children: ReactNode;
 } & TFormConfig;
 
-const PHform = ({onSubmit, children, defaultValues}: TFormProps) => {
+const PHform = ({onSubmit, children, defaultValues, resolver}: TFormProps) => {
   const formConfig: TFormConfig = {};
 
   if (defaultValues) {
     formConfig['defaultValues'] = defaultValues;
   }
-    const methods = useForm()
+  if (resolver) {
+    formConfig['resolver'] = resolver;
+  }
+
+    const methods = useForm(formConfig);
   return (<FormProvider {...methods}>
-   <form onSubmit={methods.handleSubmit(onSubmit)}>
+   <Form onFinish={methods.handleSubmit(onSubmit)}>
       {
         children
       }
-   </form>
+   </Form>
   </FormProvider>)
 }
 
