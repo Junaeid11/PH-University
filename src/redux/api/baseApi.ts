@@ -5,16 +5,16 @@ import { logout, setUser } from "../features/auth/authSlice";
 import { toast } from "sonner";
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: "http://localhost:3300/api/v1",
-    credentials: "include",
-    prepareHeaders: (headers, { getState }) => {
-        const token = (getState() as RootState).auth.token;
-        if (token) {
-            headers.set("authorization", ` ${token}`);
-        }
-        return headers;
-
+  baseUrl: "http://localhost:3300/api/v1",
+  credentials: "include",
+  prepareHeaders: (headers, { getState }) => {
+    const token = (getState() as RootState).auth.token;
+    if (token) {
+      headers.set("authorization", ` ${token}`);
     }
+    return headers;
+
+  }
 })
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const baseQueryWithRefreshToken: BaseQueryFn<
@@ -23,9 +23,9 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   DefinitionType
 > = async (args, api, extraOptions): Promise<any> => {
   let result = await baseQuery(args, api, extraOptions);
-if(result?.error?.status === 403){
-  toast.error("User not found")
-}
+  if (result?.error?.status === 403) {
+    toast.error("User not found")
+  }
   if (result?.error?.status === 401) {
     console.log('401 Unauthorized - Attempting to refresh token');
 
@@ -65,9 +65,10 @@ if(result?.error?.status === 403){
 
 
 export const baseApi = createApi({
-    reducerPath: "baseApi",
-    baseQuery: baseQueryWithRefreshToken,
-    endpoints: () => ({
+  reducerPath: "baseApi",
+  baseQuery: baseQueryWithRefreshToken,
+  tagTypes: ['Semester', 'courses'],
+  endpoints: () => ({
 
-    })
+  })
 })
